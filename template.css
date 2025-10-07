@@ -1,0 +1,94 @@
+:root {
+  --frost-bg: rgba(255, 255, 255, 0.12);
+  --frost-border: rgba(255, 255, 255, 0.18);
+  --frost-accent: rgba(255, 255, 255, 0.6);
+  --frost-blur: 10px;
+  --frost-radius: 14px;
+  --frost-padding: 1.25rem;
+  --frost-shadow: 0 6px 30px rgba(6, 15, 30, 0.45);
+}
+
+.demo-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.frosted-card {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.03)
+  );
+  border: 1px solid var(--frost-border);
+  border-radius: var(--frost-radius);
+  padding: var(--frost-padding);
+  color: var(--frost-accent);
+  box-shadow: var(--frost-shadow);
+  overflow: hidden;
+  backdrop-filter: blur(var(--frost-blur)) saturate(120%);
+  -webkit-backdrop-filter: blur(var(--frost-blur)) saturate(120%);
+  /* Improve contrast on some backgrounds */
+  background-clip: padding-box;
+  max-width: 420px;
+}
+
+@supports not (
+  (-webkit-backdrop-filter: blur(0)) or (backdrop-filter: blur(0))
+) {
+  .frosted-card {
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.06)
+    );
+  }
+}
+
+.frosted-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='rgba(255,255,255,0.02)'/><stop offset='1' stop-color='rgba(0,0,0,0.02)'/></linearGradient></defs><rect width='200' height='200' fill='url(%23g)' /></svg>");
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+}
+
+.frosted-card h2 {
+  margin: 0 0 0.5rem 0;
+  color: white;
+  font-size: 1.25rem;
+}
+.frosted-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+}
+
+.frosted-card.accent {
+  border-image: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.6),
+      rgba(120, 180, 255, 0.6)
+    )
+    1;
+}
+
+@media (max-width: 420px) {
+  .frosted-card {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+}
+
+.bg-demo {
+  background-image: linear-gradient(120deg, #2b5876 0%, #4e4376 100%),
+    url("https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1600&q=80");
+  background-size: cover;
+  background-position: center;
+}
