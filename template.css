@@ -109,13 +109,16 @@
   background: transparent;
   transition: height 260ms ease, padding 260ms ease, backdrop-filter 260ms ease,
     background-color 260ms ease, box-shadow 260ms ease;
+  margin-top: 35px;
 }
 
 .navbar-inner {
   width: 100%;
   max-width: 980px;
   margin: 0 auto;
-  display: grid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   grid-template-columns: auto auto auto;
   align-items: center;
   column-gap: 3rem;
@@ -144,10 +147,9 @@
   color: white;
   font-weight: 600;
   font-size: 1.05rem;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  /* position: absolute; */
+  /* left: 50%; */
+  /* top: 50%; */
   z-index: 2;
 }
 .nav-logo img {
@@ -155,6 +157,7 @@
   width: auto;
   display: block;
   transition: transform 260ms ease;
+  transform: scale(2.2);
 }
 
 .nav-left a,
