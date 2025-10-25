@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
-    <link rel="stylesheet" href="admin.css">
+    <title>Travel Destination Guide - Admin</title>
+    <link rel="stylesheet" href="web.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Jost:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Navigation Radio Buttons -->
@@ -13,27 +14,30 @@
     <input type="radio" name="main-nav" id="nav-media">
     <input type="radio" name="main-nav" id="nav-users">
     <input type="radio" name="main-nav" id="nav-profile">
+    <input type="radio" name="main-nav" id="nav-reviews">
     <input type="radio" name="dest-nav" id="dest-countries" checked>
     <input type="radio" name="dest-nav" id="dest-spots">
 
-    <nav class="top-nav">
-        <div class="company-name">Travel Destination Guide</div>
-        <div class="user-info">
-            <span>Yara</span>
-            <a href="#" class="logout-button">Logout</a>
-        </div>
-    </nav>
+    <!-- Top Navigation -->
+    <header class="navbar" id="site-navbar">
+        <div class="navbar-inner">
+            <div class="nav-left">
+                <label for="nav-home">Home</label>
+                <label for="nav-destinations">Destinations</label>
+                <label for="nav-media">Media</label>
+            </div>
 
-    <details id="sidebar">
-        <summary>☰</summary>
-        <ul class="menu">
-            <li><label for="nav-home">🏠 Home</label></li>
-            <li><label for="nav-destinations">🗺️ Destinations</label></li>
-            <li><label for="nav-media">🖼️ Media Library</label></li>
-            <li><label for="nav-users">👥 User Management</label></li>
-            <li><label for="nav-profile">🙋🏻‍♀️ Admin Profile</label></li>
-        </ul>
-    </details>
+            <div class="nav-logo">
+                <img src="logo.png" alt="Travel Logo">
+            </div>
+
+            <div class="nav-right">
+                <label for="nav-users">Accounts</label>
+                <label for="nav-reviews">Reviews</label>
+                <label for="nav-profile">User</label>
+            </div>
+        </div>
+    </header>
 
     <main class="content">
         <div id="content-area">
@@ -47,20 +51,12 @@
 
                 <div class="dashboard-boxes">
                     <div class="dashboard-box">
-                        <h3>No. of Visits</h3>
-                        <p>2,892</p>
-                    </div>
-                    <div class="dashboard-box">
                         <h3>No. of Countries</h3>
                         <p>101</p>
                     </div>
                     <div class="dashboard-box">
                         <h3>No. of Tourist Spots</h3>
                         <p>1,000</p>
-                    </div>
-                    <div class="dashboard-box">
-                        <h3>No. of Active Users</h3>
-                        <p>258</p>
                     </div>
                 </div>
 
@@ -109,168 +105,6 @@
                                     <div class="bar" style="width: 60%;"></div>
                                 </div>
                                 <span class="visits">2,880</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Bar Graph for User Visits -->
-                    <div class="graph-box">
-                        <input type="radio" name="year" id="year-2024" checked>
-                        <input type="radio" name="year" id="year-2025">
-                        
-                        <div class="graph-header">
-                            <h3>Monthly User Visits</h3>
-                            <div class="year-selector">
-                                <label for="year-2024" class="year-button">2024</label>
-                                <label for="year-2025" class="year-button">2025</label>
-                            </div>
-                        </div>
-                        <div class="bar-graph" id="graph-2024">
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 65%;">
-                                    <span class="bar-value">520</span>
-                                </div>
-                                <span class="month-label">Jan</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 72%;">
-                                    <span class="bar-value">576</span>
-                                </div>
-                                <span class="month-label">Feb</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 85%;">
-                                    <span class="bar-value">680</span>
-                                </div>
-                                <span class="month-label">Mar</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 78%;">
-                                    <span class="bar-value">624</span>
-                                </div>
-                                <span class="month-label">Apr</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 90%;">
-                                    <span class="bar-value">720</span>
-                                </div>
-                                <span class="month-label">May</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 95%;">
-                                    <span class="bar-value">760</span>
-                                </div>
-                                <span class="month-label">Jun</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 100%;">
-                                    <span class="bar-value">800</span>
-                                </div>
-                                <span class="month-label">Jul</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 88%;">
-                                    <span class="bar-value">704</span>
-                                </div>
-                                <span class="month-label">Aug</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 82%;">
-                                    <span class="bar-value">656</span>
-                                </div>
-                                <span class="month-label">Sep</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 70%;">
-                                    <span class="bar-value">560</span>
-                                </div>
-                                <span class="month-label">Oct</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 60%;">
-                                    <span class="bar-value">480</span>
-                                </div>
-                                <span class="month-label">Nov</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 55%;">
-                                    <span class="bar-value">440</span>
-                                </div>
-                                <span class="month-label">Dec</span>
-                            </div>
-                        </div>
-                        <div class="bar-graph" id="graph-2025">
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 68%;">
-                                    <span class="bar-value">544</span>
-                                </div>
-                                <span class="month-label">Jan</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 75%;">
-                                    <span class="bar-value">600</span>
-                                </div>
-                                <span class="month-label">Feb</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 88%;">
-                                    <span class="bar-value">704</span>
-                                </div>
-                                <span class="month-label">Mar</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 92%;">
-                                    <span class="bar-value">736</span>
-                                </div>
-                                <span class="month-label">Apr</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 100%;">
-                                    <span class="bar-value">800</span>
-                                </div>
-                                <span class="month-label">May</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 95%;">
-                                    <span class="bar-value">760</span>
-                                </div>
-                                <span class="month-label">Jun</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 85%;">
-                                    <span class="bar-value">680</span>
-                                </div>
-                                <span class="month-label">Jul</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 78%;">
-                                    <span class="bar-value">624</span>
-                                </div>
-                                <span class="month-label">Aug</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 82%;">
-                                    <span class="bar-value">656</span>
-                                </div>
-                                <span class="month-label">Sep</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 70%;">
-                                    <span class="bar-value">560</span>
-                                </div>
-                                <span class="month-label">Oct</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 0;">
-                                    <span class="bar-value"></span>
-                                </div>
-                                <span class="month-label">Nov</span>
-                            </div>
-                            <div class="bar-graph-item">
-                                <div class="bar-column" style="height: 0;">
-                                    <span class="bar-value"></span>
-                                </div>
-                                <span class="month-label">Dec</span>
                             </div>
                         </div>
                     </div>
@@ -445,6 +279,103 @@
                 </table>
             </div>
 
+            <!-- Reviews Content -->
+            <div id="reviews-content" class="content-section">
+                <h2>Customer Reviews</h2>
+                <div class="welcome-note">
+                    <p>View and manage customer reviews and ratings for destinations.</p>
+                </div>
+
+                <!-- Individual Reviews -->
+                <div class="reviews-list">
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <h4>Sarah Johnson</h4>
+                                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                                <p class="review-date">October 20, 2025 • Eiffel Tower, France</p>
+                            </div>
+                            <a href="#" class="delete-button">Delete</a>
+                        </div>
+                        <p class="review-text">Absolutely breathtaking experience! The Eiffel Tower exceeded all my expectations. The view from the top was stunning, especially at sunset. Highly recommend visiting during the evening when the lights sparkle.</p>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <h4>Michael Chen</h4>
+                                <div class="review-stars">⭐⭐⭐⭐</div>
+                                <p class="review-date">October 18, 2025 • Grand Canyon, USA</p>
+                            </div>
+                            <a href="#" class="delete-button">Delete</a>
+                        </div>
+                        <p class="review-text">The Grand Canyon is truly a natural wonder! The hiking trails were well-maintained and the scenic views were incredible. It can get quite hot during the day, so plan accordingly. Definitely worth the trip!</p>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <h4>Emma Williams</h4>
+                                <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                                <p class="review-date">October 15, 2025 • Tokyo Tower, Japan</p>
+                            </div>
+                            <a href="#" class="delete-button">Delete</a>
+                        </div>
+                        <p class="review-text">Tokyo Tower is a must-visit! The observation deck offers panoramic views of the entire city. The surrounding area has great restaurants and shops. Perfect blend of modern and traditional Japanese culture.</p>
+                    </div>
+                </div>
+
+                <!-- Reviews Summary -->
+                <div class="reviews-container">
+                    <div class="reviews-summary">
+                        <h3>Overall Ratings Summary</h3>
+                        <div class="rating-display">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <div class="rating-text">4.7 out of 5</div>
+                            <div class="rating-count">40 total customer ratings</div>
+                        </div>
+
+                        <div class="rating-breakdown">
+                            <div class="rating-row">
+                                <span class="star-label">5 Star</span>
+                                <div class="rating-bar-container">
+                                    <div class="rating-bar" style="width: 84%;"></div>
+                                </div>
+                                <span class="rating-percent">84%</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="star-label">4 Star</span>
+                                <div class="rating-bar-container">
+                                    <div class="rating-bar" style="width: 50%;"></div>
+                                </div>
+                                <span class="rating-percent">50%</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="star-label">3 Star</span>
+                                <div class="rating-bar-container">
+                                    <div class="rating-bar" style="width: 25%;"></div>
+                                </div>
+                                <span class="rating-percent">25%</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="star-label">2 Star</span>
+                                <div class="rating-bar-container">
+                                    <div class="rating-bar" style="width: 10%;"></div>
+                                </div>
+                                <span class="rating-percent">10%</span>
+                            </div>
+                            <div class="rating-row">
+                                <span class="star-label">1 Star</span>
+                                <div class="rating-bar-container">
+                                    <div class="rating-bar" style="width: 5%;"></div>
+                                </div>
+                                <span class="rating-percent">5%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Admin Profile Content -->
             <div id="profile-content" class="content-section">
                 <h2>Admin Profile</h2>
@@ -534,194 +465,268 @@
 
             <!-- Destinations Content -->
             <div id="destinations-content" class="content-section">
-                <nav class="sub-nav">
-                    <label for="dest-countries">Countries</label>
-                    <label for="dest-spots">Tourist Spots</label>
-                </nav>
+                <div class="destinations-wrapper">
+                    <nav class="sub-nav">
+                        <label for="dest-countries">Countries</label>
+                        <label for="dest-spots">Tourist Spots</label>
+                    </nav>
 
-                <!-- Countries Content -->
-                <div id="countries-content" class="destination-section">
-                    <h3>Country Management</h3>
-                    <p>Existing Countries</p>
-                    <a href="#" class="add-button">➕ Add New Country</a>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Currency</th>
-                                <th>Language</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>United States</td>
-                                <td>USD</td>
-                                <td>English</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Canada</td>
-                                <td>CAD</td>
-                                <td>English/French</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>France</td>
-                                <td>EURO</td>
-                                <td>French</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Japan</td>
-                                <td>YEN</td>
-                                <td>Japanese</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Peru</td>
-                                <td>PERUVIAN SOL</td>
-                                <td>Spanish</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>China</td>
-                                <td>YUAN</td>
-                                <td>Mandarin</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Italy</td>
-                                <td>EURO</td>
-                                <td>Italian</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ireland</td>
-                                <td>EURO</td>
-                                <td>Irish/English</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                    <!-- Countries Content -->
+                    <div id="countries-content" class="destination-section">
+                        <h3>Country Management</h3>
+                        <p>Existing Countries</p>
+                        <a href="#" class="add-button">➕ Add New Country</a>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Currency</th>
+                                    <th>Language</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>United States</td>
+                                    <td>USD</td>
+                                    <td>English</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Canada</td>
+                                    <td>CAD</td>
+                                    <td>English/French</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>France</td>
+                                    <td>EURO</td>
+                                    <td>French</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Japan</td>
+                                    <td>YEN</td>
+                                    <td>Japanese</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Peru</td>
+                                    <td>PERUVIAN SOL</td>
+                                    <td>Spanish</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>China</td>
+                                    <td>YUAN</td>
+                                    <td>Mandarin</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Italy</td>
+                                    <td>EURO</td>
+                                    <td>Italian</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Ireland</td>
+                                    <td>EURO</td>
+                                    <td>Irish/English</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                <!-- Tourist Spots Content -->
-                <div id="tourist-spots-content" class="destination-section">
-                    <h3>Tourist Spot Management</h3>
-                    <p>Existing Tourist Spot</p>
-                    <a href="#" class="add-button">➕ Add New Spot</a>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Country</th>
-                                <th>Location</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Eiffel Tower</td>
-                                <td>France</td>
-                                <td>Paris</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Grand Canyon</td>
-                                <td>United States</td>
-                                <td>Arizona</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Tokyo Tower</td>
-                                <td>Japan</td>
-                                <td>Tokyo</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Machu Picchu</td>
-                                <td>Peru</td>
-                                <td>Cusco</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Great Wall</td>
-                                <td>China</td>
-                                <td>Beijing</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Colosseum</td>
-                                <td>Italy</td>
-                                <td>Rome</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Stanley Park</td>
-                                <td>Canada</td>
-                                <td>Vancouver</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Rock of Cashel</td>
-                                <td>Ireland</td>
-                                <td>Tipperary</td>
-                                <td>
-                                    <a href="#" class="edit-button">Edit</a>
-                                    <a href="#" class="delete-button">Delete</a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <!-- Tourist Spots Content -->
+                    <div id="tourist-spots-content" class="destination-section">
+                        <h3>Tourist Spot Management</h3>
+                        <p>Existing Tourist Spot</p>
+                        <a href="#" class="add-button">➕ Add New Spot</a>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Country</th>
+                                    <th>Location</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Eiffel Tower</td>
+                                    <td>France</td>
+                                    <td>Paris</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Grand Canyon</td>
+                                    <td>United States</td>
+                                    <td>Arizona</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Tokyo Tower</td>
+                                    <td>Japan</td>
+                                    <td>Tokyo</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Machu Picchu</td>
+                                    <td>Peru</td>
+                                    <td>Cusco</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Great Wall</td>
+                                    <td>China</td>
+                                    <td>Beijing</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Colosseum</td>
+                                    <td>Italy</td>
+                                    <td>Rome</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Stanley Park</td>
+                                    <td>Canada</td>
+                                    <td>Vancouver</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Rock of Cashel</td>
+                                    <td>Ireland</td>
+                                    <td>Tipperary</td>
+                                    <td>
+                                        <a href="#" class="edit-button">Edit</a>
+                                        <a href="#" class="delete-button">Delete</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <svg class="wave-divider" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,50 C300,100 600,0 900,50 C1050,75 1150,50 1200,40 L1200,120 L0,120 Z" fill="#0D8AA8"/>
+            <path d="M0,70 C300,20 600,100 900,70 C1050,55 1150,80 1200,65 L1200,120 L0,120 Z" fill="#023E74" opacity="0.9"/>
+            <path d="M0,40 C200,90 400,10 600,40 C800,70 1000,30 1200,50 L1200,0 L0,0 Z" fill="#F1B90C" opacity="0.8"/>
+        </svg>
+        
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="logo.png" alt="Travel Logo">
+            </div>
+
+            <div class="footer-sections">
+                <div class="footer-section">
+                    <h3>Browse</h3>
+                    <ul>
+                        <li><label for="nav-home">Home</label></li>
+                        <li><label for="nav-destinations">Destinations</label></li>
+                        <li><label for="nav-profile">User</label></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contacts</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Social</h3>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span class="footer-company">Explore Inc.</span>
+                <span class="footer-copyright">Group 05 © 2025</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const nav = document.getElementById("site-navbar");
+            const shrinkAt = 80;
+            let lastKnownScroll = 0;
+            let ticking = false;
+
+            function onScroll() {
+                lastKnownScroll = window.scrollY;
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        if (lastKnownScroll > shrinkAt) nav.classList.add("shrink");
+                        else nav.classList.remove("shrink");
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }
+
+            window.addEventListener("scroll", onScroll, { passive: true });
+        })();
+    </script>
 </body>
 </html>
