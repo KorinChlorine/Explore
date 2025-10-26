@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQs - Explore</title>
+
+    <link rel="stylesheet" href="footer.css" />
+    <link rel="stylesheet" href="faqs.css" />
+
+    <link rel="stylesheet" href="template.css" />
+  </head>
+  <body>
+    <div id="site-navbar"></div>
+
+    <script>
+      fetch("sample.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("site-navbar").innerHTML = html;
+
+          // now load the navbar behavior (once HTML is inserted)
+          const s = document.createElement("script");
+          s.src = "navbar.js";
+          s.defer = true;
+          document.body.appendChild(s);
+        })
+        .catch((e) => console.error(e));
+    </script>
+
+    <div class="faq-container">
+      <h1>FREQUENTLY ASKED<br />QUESTIONS</h1>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>How to search a specific destination?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            You can use the search bar at the top of the Destinations page to
+            find specific locations. Simply type in the name of the destination
+            you're looking for, and our system will show you all relevant
+            results including popular attractions, accommodations, and travel
+            guides.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item active">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Are the information in the website accurate?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Yes! All the information on Explore is carefully researched and
+            regularly updated to ensure accuracy and reliability. We gather
+            details from trusted sources, official tourism boards, and verified
+            local insights to give you the most authentic travel guides
+            possible. However, since travel conditions and local guidelines may
+            change over time, we recommend checking with local authorities or
+            official websites for the latest updates before your trip.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Can I trust the reviews on Explore?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Absolutely! We verify all reviews to ensure they come from genuine
+            travelers who have actually visited the destinations. Our moderation
+            team checks each review for authenticity and removes any suspicious
+            or fraudulent content to maintain the integrity of our community
+            feedback.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Can I contribute articles or travel photos to Explore?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Yes, we welcome contributions from passionate travelers! You can
+            submit your travel stories, tips, and photos through our User
+            section. Simply create an account, and you'll be able to share your
+            experiences with our community. All submissions go through a review
+            process to ensure quality and relevance.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Is Explore free to use?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Yes! Explore is completely free to use. You can browse destinations,
+            read articles, view photos, and access all travel guides without any
+            subscription fees or hidden charges. Our mission is to make travel
+            planning accessible to everyone.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>How often is the information updated?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            We update our content regularly to keep information current and
+            relevant. Major destinations and popular articles are reviewed
+            monthly, while breaking news or significant changes are updated
+            immediately. Our team continuously monitors travel advisories and
+            local updates to ensure you have the most recent information.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question" onclick="toggleFaq(this)">
+          <h3>Mahal ka ba nya?</h3>
+          <div class="faq-icon"></div>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">Absolutely not!</div>
+        </div>
+      </div>
+    </div>
+    <div id="site-footer"></div>
+
+    <script>
+      fetch("footer.html")
+        .then((res) => res.text())
+        .then((html) => {
+          document.getElementById("site-footer").innerHTML = html;
+
+          // Add smooth scrolling AFTER footer is loaded
+          document.querySelectorAll("footer a").forEach((link) => {
+            link.addEventListener("click", (e) => {
+              const href = link.getAttribute("href");
+              // Only prevent default for hash links
+              if (href.startsWith("#")) {
+                e.preventDefault();
+              }
+            });
+          });
+        })
+        .catch((e) => console.error(e));
+    </script>
+
+    <script>
+      function toggleFaq(element) {
+        const faqItem = element.parentElement;
+        const isActive = faqItem.classList.contains("active");
+
+        // Close all FAQ items
+        document.querySelectorAll(".faq-item").forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        // Open clicked item if it wasn't active
+        if (!isActive) {
+          faqItem.classList.add("active");
+        }
+      }
+
+      // Add smooth scrolling for footer links
+      document.querySelectorAll("footer a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          // Add your navigation logic here
+        });
+      });
+    </script>
+  </body>
+</html>
