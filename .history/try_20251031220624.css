@@ -134,10 +134,10 @@ body {
 /* tourist section image */
 .tourist-section-pic {
   position: absolute;
-  top: 53%;
-  left: -20%;
-  height: 110% !important;
-  width: 50% !important;
+  top: 50%;
+  left: -17%;
+  height: 100% !important;
+  width: 50vw;
   /* responsive width, same shape */
   border-radius: 50%;
   object-fit: cover;
@@ -165,10 +165,10 @@ body {
 /* animation for food */
 .food-section-pic {
   position: absolute;
-  top: 53%;
-  right: -20%;
-  height: 110% !important;
-  width: 50% !important;
+  top: 50%;
+  right: -17%;
+  height: 90vh;
+  width: 50vw;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: -25px 0px 30px rgba(0, 0, 0, 0.6);
@@ -193,11 +193,11 @@ body {
 }
 
 .activities-section-pic {
- position: absolute;
-  top: 53%;
-  left: -20%;
-  height: 110% !important;
-  width: 50% !important;
+  position: absolute;
+  top: 50%;
+  left: -17%;
+  height: 95vh;
+  width: 50vw;
   /* responsive width, same shape */
   border-radius: 50%;
   object-fit: cover;
@@ -806,6 +806,6 @@ body {
 
 
 
-.tourist-section-card, .tourist-section, .food-section-card, .food-section, .activities-section, .about-section-card{  
-  height: fit-content !important;
+.tourist-section-card, .tourist-section {
+ height: fit-content !important;
 }

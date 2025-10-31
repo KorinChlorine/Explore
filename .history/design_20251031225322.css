@@ -84,27 +84,11 @@ h1{
   display: flex;
 }
 
-.controls-container {
-  margin: 0 auto;
+.place-container{
   display: flex;
-  width: 75% !important;
-  padding: 0px 12px;
-  align-items: center;
-  justify-content: space-between !important;
+  justify-content: center !important;
+  background-color: #008080 !important;
 }
-
-#pagination {
-  margin: 0 auto;
-  height: 100% !important;
-}
-
-.bakc-button{
-  position: absolute !important;
-  right: 0;
-}
-
-
-
 
 
  /* about the continent */

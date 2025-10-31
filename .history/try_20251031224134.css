@@ -136,7 +136,7 @@ body {
   position: absolute;
   top: 53%;
   left: -20%;
-  height: 110% !important;
+  height: 100% !important;
   width: 50% !important;
   /* responsive width, same shape */
   border-radius: 50%;
@@ -167,7 +167,7 @@ body {
   position: absolute;
   top: 53%;
   right: -20%;
-  height: 110% !important;
+  height: 100% !important;
   width: 50% !important;
   border-radius: 50%;
   object-fit: cover;
@@ -196,7 +196,7 @@ body {
  position: absolute;
   top: 53%;
   left: -20%;
-  height: 110% !important;
+  height: 100% !important;
   width: 50% !important;
   /* responsive width, same shape */
   border-radius: 50%;

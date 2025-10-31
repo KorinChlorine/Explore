@@ -88,7 +88,7 @@ h1{
   margin: 0 auto;
   display: flex;
   width: 75% !important;
-  padding: 0px 12px;
+
   align-items: center;
   justify-content: space-between !important;
 }
@@ -97,12 +97,6 @@ h1{
   margin: 0 auto;
   height: 100% !important;
 }
-
-.bakc-button{
-  position: absolute !important;
-  right: 0;
-}
-
 
 
 

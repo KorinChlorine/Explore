@@ -60,16 +60,7 @@
                                 "price": 1500,
                                 "currency": "PHP",
                                 "ageRequirement": "12+",
-                                "description": "Fly across the forest canopy on a thrilling zip line adventure.",
-                                "Image": "/images/jp.jpg"
-                            },
-                            {
-                                "name": "Kayak",
-                                "price": 1500,
-                                "currency": "PHP",
-                                "ageRequirement": "12+",
-                                "description": "Fly across the forest canopy on a thrilling zip line adventure.",
-                                "Image": "/images/jp.jpg"
+                                "description": "Fly across the forest canopy on a thrilling zip line adventure."
                             }
                         ],
                         "reviews": [
@@ -281,8 +272,7 @@
                                 "price": 1500,
                                 "currency": "PHP",
                                 "ageRequirement": "12+",
-                                "description": "Fly across the forest canopy on a thrilling zip line adventure.",
-                                "Image": "/images/jp.jpg"
+                                "description": "Fly across the forest canopy on a thrilling zip line adventure."
                             }
                         ],
                         "reviews": [
@@ -352,8 +342,7 @@
                                 "price": 1500,
                                 "currency": "PHP",
                                 "ageRequirement": "12+",
-                                "description": "Fly across the forest canopy on a thrilling zip line adventure.",
-                                "Image": "/images/jp.jpg"
+                                "description": "Fly across the forest canopy on a thrilling zip line adventure."
                             }
                         ],
                         "reviews": [
@@ -423,8 +412,7 @@
                                 "price": 1500,
                                 "currency": "PHP",
                                 "ageRequirement": "12+",
-                                "description": "Fly across the forest canopy on a thrilling zip line adventure.",
-                                "Image": "/images/jp.jpg"
+                                "description": "Fly across the forest canopy on a thrilling zip line adventure."
                             }
                         ],
                         "reviews": [

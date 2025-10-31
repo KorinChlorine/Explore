@@ -136,7 +136,7 @@ body {
   position: absolute;
   top: 53%;
   left: -20%;
-  height: 110% !important;
+  height: 100% !important;
   width: 50% !important;
   /* responsive width, same shape */
   border-radius: 50%;
@@ -167,7 +167,7 @@ body {
   position: absolute;
   top: 53%;
   right: -20%;
-  height: 110% !important;
+  height: 100% !important;
   width: 50% !important;
   border-radius: 50%;
   object-fit: cover;
@@ -193,11 +193,11 @@ body {
 }
 
 .activities-section-pic {
- position: absolute;
-  top: 53%;
-  left: -20%;
-  height: 110% !important;
-  width: 50% !important;
+  position: absolute;
+  top: 50%;
+  left: -17%;
+  height: 95vh;
+  width: 50vw;
   /* responsive width, same shape */
   border-radius: 50%;
   object-fit: cover;

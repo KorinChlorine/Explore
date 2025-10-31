@@ -84,26 +84,18 @@ h1{
   display: flex;
 }
 
+
 .controls-container {
-  margin: 0 auto;
+  margin: 0 auto;              /* centers horizontally */
   display: flex;
-  width: 75% !important;
-  padding: 0px 12px;
+  flex-direction: column;      /* stack pagination and button vertically */
+  justify-content: center;
   align-items: center;
-  justify-content: space-between !important;
+  background-color: #111;      /* keep your bg-dark */
+  width: 75%;
+  padding: 1rem;
+  border-radius: 8px;
 }
-
-#pagination {
-  margin: 0 auto;
-  height: 100% !important;
-}
-
-.bakc-button{
-  position: absolute !important;
-  right: 0;
-}
-
-
 
 
 
