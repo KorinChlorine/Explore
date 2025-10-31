@@ -30,7 +30,14 @@
 
     <div class="faq-container">
       <h1>FREQUENTLY ASKED QUESTIONS</h1>
-
+      <div class="SearchBar">
+        <input
+          type="text"
+          id="faqSearchInput"
+          onkeyup="searchFAQs()"
+          placeholder="Search for questions..."
+        />
+      </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
           <h3>How to search a specific destination?</h3>
@@ -310,14 +317,6 @@
           faqItem.classList.add("active");
         }
       }
-
-      // Add smooth scrolling for footer links
-      document.querySelectorAll("footer a").forEach((link) => {
-        link.addEventListener("click", (e) => {
-          e.preventDefault();
-          // Add your navigation logic here
-        });
-      });
     </script>
   </body>
 </html>

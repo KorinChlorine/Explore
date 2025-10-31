@@ -9,24 +9,84 @@ body {
   min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
-  background-image: url("Background\ 1.png");
-  background-position: 50% 30%;
+  background-image: url("BGFAQ.png");
+  background-position: top;
   background-size: 100% auto;
-  background-attachment: world;
-  background-repeat: no-repeat;
+  background-size: cover;
+  will-change: scroll-position;
 }
+
 body.scrolled {
   padding-top: calc(var(--nav-height-shrink, 70px) + 12px);
 }
 
+.SearchBar {
+  text-align: center;
+  margin-bottom: 40px;
+  position: relative;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 30px;
+}
+
+.SearchBar input {
+  width: 100%;
+  padding: 20px 60px 20px 30px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.4) 100%
+  );
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: #0b0233;
+  font-family: inherit;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateZ(0);
+  outline: none;
+}
+
+.SearchBar input::placeholder {
+  color: rgba(11, 2, 51, 0.6);
+  font-weight: 500;
+}
+
+.SearchBar input:focus {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(255, 255, 255, 0.55) 100%
+  );
+  box-shadow: 0 12px 40px rgba(66, 107, 244, 0.25),
+    0 0 0 3px rgba(66, 107, 244, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transform: translateY(-2px) translateZ(0);
+}
+
+.SearchBar::after {
+  content: "🔍";
+  position: absolute;
+  right: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.3rem;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
 .faq-container {
   max-width: 1500px;
-  margin: 50% auto;
+  margin: 4.5% auto 5%;
   background-color: rgba(0, 0, 0, 0.39);
   padding: 3%;
-  margin-top: 4.5%;
   border-radius: 50px;
-  margin-bottom: 5%;
+  /* GPU acceleration */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 h1 {
@@ -36,6 +96,8 @@ h1 {
   text-align: center;
   margin-bottom: 50px;
   line-height: 1.2;
+  /* Improve text rendering */
+  text-rendering: optimizeLegibility;
 }
 
 .faq-item {
@@ -49,11 +111,15 @@ h1 {
   overflow: hidden;
   backdrop-filter: blur(10px);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease;
+  /* Use transform instead of other properties for animation */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* GPU acceleration */
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .faq-item:hover {
-  transform: translateY(-2px);
+  transform: translateY(-2px) translateZ(0);
 }
 
 .faq-question {
@@ -67,7 +133,6 @@ h1 {
 
 .faq-question h3 {
   font-size: 1.6rem;
-
   font-weight: 600;
   flex: 1;
   color: rgb(20, 5, 83);
@@ -83,7 +148,10 @@ h1 {
   justify-content: center;
   flex-shrink: 0;
   margin-left: 20px;
-  transition: transform 0.3s ease;
+  /* Optimized transition */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .faq-icon::after {
@@ -94,13 +162,15 @@ h1 {
 }
 
 .faq-item.active .faq-icon {
-  transform: rotate(180deg);
+  transform: rotate(180deg) translateZ(0);
 }
 
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
+  /* Smoother transition with cubic-bezier */
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .faq-item.active .faq-answer {
@@ -114,12 +184,20 @@ h1 {
   line-height: 1.7;
 }
 
+/* Mobile optimization with hardware acceleration */
 @media (max-width: 768px) {
   .faq-container {
     padding: 5%;
-    margin: 20% auto;
+    margin: 4% auto 20%;
     border-radius: 30px;
-    margin-top: 4%;
+    /* Maintain GPU acceleration */
+    transform: translateZ(0);
+  }
+
+  body {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   h1 {
@@ -141,7 +219,17 @@ h1 {
     text-align: center;
   }
 }
+
 #site-navbar {
   overflow: visible;
   position: static;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

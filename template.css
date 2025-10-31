@@ -8,17 +8,12 @@
   --frost-padding: 1.25rem;
   --frost-shadow: 0 6px 30px rgba(6, 15, 30, 0.45);
 
-  /* Enhanced navbar transition variables */
   --nav-transition-duration: 400ms;
   --nav-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
   --nav-blur: 8px;
   --nav-blur-shrink: 12px;
 }
 
-/* TEMPLATES
-.frosted-card
-
-*/
 .frosted-card {
   position: relative;
   background: linear-gradient(
@@ -196,7 +191,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Shrink state styles */
 .navbar.shrink #site-navbar {
   top: 8px;
 }
@@ -452,16 +446,14 @@
     overflow-y: auto;
   }
 
-  /* position both sections consecutively instead of overlapping */
   .nav-left {
     top: 70px;
   }
 
   .nav-right {
-    top: calc(175px + 100%); /* place below .nav-left dynamically */
+    top: calc(175px + 100%);
   }
 
-  /* when both are open */
   .nav-left.mobile-open,
   .nav-right.mobile-open {
     transform: translateY(0);
@@ -593,7 +585,6 @@
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Animate to X when active */
 .nav-toggle.active span:nth-child(1) {
   transform: translateY(6.5px) rotate(45deg);
 }
@@ -607,7 +598,6 @@
 
 /* Glass effect for mobile menu */
 @media (max-width: 640px) {
-  /* Mobile menu overlay effect */
   body.menu-open::before {
     content: "";
     position: fixed;
@@ -630,7 +620,6 @@
     }
   }
 
-  /* Add subtle animations to menu items */
   .nav-left.mobile-open a,
   .nav-right.mobile-open a {
     animation: slideInLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1) backwards;
@@ -667,22 +656,19 @@
   }
 }
 
-/* Default icons style */
 .navbar-inner a i {
   font-size: 1rem;
   color: white;
   transition: all 0.25s ease;
 }
 
-/* When scrolled, hide icons without touching navbar-inner */
 .navbar-inner.hide-icons a i {
-  display: none; /* removes icons from layout */
+  display: none;
   transition: all 0.25s ease;
 }
 
-/* Adjust the link spacing when icons are gone */
 .navbar-inner.hide-icons a .nav-text {
-  margin-left: 0; /* remove extra spacing if needed */
+  margin-left: 0;
   margin-right: -0.2rem;
   transition: margin 1s ease;
 }

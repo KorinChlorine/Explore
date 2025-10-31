@@ -2,7 +2,6 @@
   const navbar = document.getElementById("site-navbar");
   const navbarInner = document.querySelector(".navbar-inner");
 
-  // Configuration
   const config = {
     shrinkAt: 200,
     initialMaxWidth: 1180,
@@ -13,7 +12,6 @@
     shrunkScale: 0.88,
   };
 
-  // Responsive breakpoints
   const breakpoints = {
     mobile: 640,
     tablet: 800,
@@ -38,7 +36,6 @@
     if (breakpoint !== currentBreakpoint) {
       currentBreakpoint = breakpoint;
 
-      // Adjust config based on breakpoint
       switch (breakpoint) {
         case "mobile":
           config.shrinkAt = 100;
@@ -57,7 +54,6 @@
           config.shrunkScale = 0.88;
       }
 
-      // Re-evaluate scroll state
       onScroll();
     }
   }
@@ -94,7 +90,6 @@
     }
   }
 
-  // ✅ New function: hide icons when screen width ≤ 950px
   function updateIconVisibility() {
     const icons = document.querySelectorAll(".navbar-inner .icon");
     if (!icons.length) return;
@@ -106,7 +101,6 @@
     }
   }
 
-  // Enhanced navbar controls
   (function initNavControls() {
     function closeAll() {
       document
@@ -114,7 +108,6 @@
         .forEach((m) => m.classList.remove("show"));
     }
 
-    // Dropdown handling
     document.addEventListener(
       "click",
       function (e) {
@@ -140,7 +133,6 @@
       }
     });
 
-    // Mobile toggle
     const toggle = document.getElementById("navToggle");
     const navLeft = document.getElementById("navLeft");
     const navRight = document.getElementById("navRight");
@@ -180,7 +172,6 @@
       });
     }
 
-    // Close mobile menu when clicking outside
     document.addEventListener("click", function (e) {
       if (window.innerWidth <= 640) {
         const isNavClick = e.target.closest("#site-navbar");
@@ -194,7 +185,6 @@
       }
     });
 
-    // Close mobile menu on link click
     document.querySelectorAll(".nav-left a, .nav-right a").forEach((link) => {
       link.addEventListener("click", () => {
         if (window.innerWidth <= 640) {
@@ -203,18 +193,15 @@
       });
     });
 
-    // Close menu on resize if going above mobile breakpoint
     window.addEventListener("resize", () => {
       if (window.innerWidth > 640) {
         closeMobileMenu();
       }
     });
 
-    // Expose close function globally
     window.closeMobileMenu = closeMobileMenu;
   })();
 
-  // Public API
   window.navbarControls = {
     setShrinkThreshold: (pixels) => {
       config.shrinkAt = pixels;
@@ -245,11 +232,9 @@
     forceExpand: () => updateNavbarSize(false),
   };
 
-  // Initialize
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  // Handle window resize with debouncing
   let resizeTimeout;
   window.addEventListener(
     "resize",
@@ -257,14 +242,13 @@
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         updateResponsiveConfig();
-        updateIconVisibility(); // ✅ Check icon visibility on resize
+        updateIconVisibility();
         onScroll();
       }, 150);
     },
     { passive: true }
   );
 
-  // Initial responsive config
   updateResponsiveConfig();
-  updateIconVisibility(); // ✅ Initial icon visibility check
+  updateIconVisibility();
 })();
