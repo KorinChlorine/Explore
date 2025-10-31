@@ -19,7 +19,6 @@
         .then((html) => {
           document.getElementById("site-navbar").innerHTML = html;
 
-          // now load the navbar behavior (once HTML is inserted)
           const s = document.createElement("script");
           s.src = "navbar.js";
           s.defer = true;
@@ -288,11 +287,9 @@
         .then((html) => {
           document.getElementById("site-footer").innerHTML = html;
 
-          // Add smooth scrolling AFTER footer is loaded
           document.querySelectorAll("footer a").forEach((link) => {
             link.addEventListener("click", (e) => {
               const href = link.getAttribute("href");
-              // Only prevent default for hash links
               if (href.startsWith("#")) {
                 e.preventDefault();
               }
@@ -307,12 +304,10 @@
         const faqItem = element.parentElement;
         const isActive = faqItem.classList.contains("active");
 
-        // Close all FAQ items
         document.querySelectorAll(".faq-item").forEach((item) => {
           item.classList.remove("active");
         });
 
-        // Open clicked item if it wasn't active
         if (!isActive) {
           faqItem.classList.add("active");
         }
