@@ -5,23 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FAQs - Explore</title>
 
-    <link rel="stylesheet" href="footer.css" />
-    <link rel="stylesheet" href="faqs.css" />
+    <link rel="stylesheet" href="/Styles.footer.css" />
+    <link rel="stylesheet" href="/Styles/faqs.css" />
 
-    <link rel="stylesheet" href="template.css" />
+    <link rel="stylesheet" href="/Styles/template.css" />
   </head>
   <body>
     <div id="site-navbar"></div>
 
     <script>
-      fetch("sample.html")
+      fetch("/Components/sample.html")
         .then((res) => res.text())
         .then((html) => {
           document.getElementById("site-navbar").innerHTML = html;
 
           // now load the navbar behavior (once HTML is inserted)
           const s = document.createElement("script");
-          s.src = "navbar.js";
+          s.src = "/Scripts/navbar.js";
           s.defer = true;
           document.body.appendChild(s);
         })
@@ -283,16 +283,14 @@
     <div id="site-footer"></div>
 
     <script>
-      fetch("footer.html")
+      fetch("/Components/footer.html")
         .then((res) => res.text())
         .then((html) => {
           document.getElementById("site-footer").innerHTML = html;
 
-          // Add smooth scrolling AFTER footer is loaded
           document.querySelectorAll("footer a").forEach((link) => {
             link.addEventListener("click", (e) => {
               const href = link.getAttribute("href");
-              // Only prevent default for hash links
               if (href.startsWith("#")) {
                 e.preventDefault();
               }
@@ -307,12 +305,10 @@
         const faqItem = element.parentElement;
         const isActive = faqItem.classList.contains("active");
 
-        // Close all FAQ items
         document.querySelectorAll(".faq-item").forEach((item) => {
           item.classList.remove("active");
         });
 
-        // Open clicked item if it wasn't active
         if (!isActive) {
           faqItem.classList.add("active");
         }
