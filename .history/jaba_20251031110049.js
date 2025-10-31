@@ -96,9 +96,6 @@ function displayContinent(continent) {
   showPage(continent, 1);
 }
 
-
-
-
 window.addEventListener("resize", () => {
   const newCardsPerPage = getCardsPerPage();
   if (newCardsPerPage !== cardsPerPage && currentContinent) {
@@ -109,7 +106,7 @@ window.addEventListener("resize", () => {
 
 // Helper: return cards per page based on screen width
 function getCardsPerPage() {
-  if (window.innerWidth < 570) return 3; // Mobile view
+  if (window.innerWidth < 600) return 3; // Mobile view
   return 8; // Desktop view
 }
 

@@ -47,7 +47,19 @@
 
 /* ANIMATIONS */
 
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+ .custom-navbar * {
+   all: unset;
+   /* resets all inherited styles */
+   display: revert;
+   /* restores browser default display */
+ }
+ 
 body {
   overflow-x: hidden !important;
 }

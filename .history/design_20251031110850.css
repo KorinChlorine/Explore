@@ -18,10 +18,6 @@
 
  /* hero section */
 
- body {
-  overflow-x: hidden;
-}
-
 h1{
   opacity: 0;
   animation: textappear 0.7s ease forwards;
@@ -266,8 +262,8 @@ h2 {
   .continent-description{
     font-size: 0.8rem;
   }
-  .card-holder-container, .about-cont-container{
-    width: 90vw !important ;
+  .card-holder-container{
+    width: 90% !important;
   }
 }
 

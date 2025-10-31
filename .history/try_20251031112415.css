@@ -47,9 +47,15 @@
 
 /* ANIMATIONS */
 
+.custom-navbar * {
+   all: unset;
+   /* resets all inherited styles */
+   display: revert;
+   /* restores browser default display */
+ }
 
 body {
-  overflow-x: hidden !important;
+  overflow-x: hidden;
 }
 
 
@@ -769,7 +775,7 @@ body {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(221, 220, 220);
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;

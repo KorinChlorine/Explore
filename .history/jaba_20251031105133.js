@@ -7,9 +7,8 @@ const titleElement = document.querySelector(".card-title");
 const pagination = document.getElementById("pagination");
 const AboutSection = document.querySelector(".about-container")
 const PlaceSection = document.querySelector(".place-container")
-let cardsPerPage = getCardsPerPage(); 
+const cardsPerPage = 8;
 let previousContinent = null
-
 
 
 // ====== Restore selected continent on page load ======
@@ -96,24 +95,7 @@ function displayContinent(continent) {
   showPage(continent, 1);
 }
 
-
-
-
-window.addEventListener("resize", () => {
-  const newCardsPerPage = getCardsPerPage();
-  if (newCardsPerPage !== cardsPerPage && currentContinent) {
-    cardsPerPage = newCardsPerPage;
-    setupPagination(currentContinent); // re-render
-  }
-});
-
-// Helper: return cards per page based on screen width
-function getCardsPerPage() {
-  if (window.innerWidth < 570) return 3; // Mobile view
-  return 8; // Desktop view
-}
-
-// ====== Function: Show cards per page ======
+//function for dynamically create cards
 function showPage(continent, page) {
   cardHolder.innerHTML = "";
 
@@ -127,6 +109,7 @@ function showPage(continent, page) {
     card.innerHTML = `
       <div class="card text-white bg-dark h-100 position-relative overflow-hidden">
         <img src="${place.image}" class="card-img img-fluid" alt="${place.name}">
+
         <!-- Overlay on hover -->
         <div class="card-overlay d-flex flex-column justify-content-center align-items-center text-center">
           <h5 class="fw-bold">${place.name}</h5>
@@ -146,17 +129,27 @@ function showPage(continent, page) {
   });
 }
 
-// ====== Function: Setup pagination ======
+
+//set up pagination
+function getCardsPerPage() {
+  const width = window.innerWidth;
+
+  if (width >= 992) return 8; // desktop
+  if (width >= 600) return 4; // tablet
+  return 3; // mobile
+}
+
 function setupPagination(continent) {
-  currentContinent = continent; // remember for resize
+  const pagination = document.getElementById("pagination");
   pagination.innerHTML = "";
 
+  let cardsPerPage = getCardsPerPage();
+  let currentPage = 1;
   const pageCount = Math.ceil(continent.places.length / cardsPerPage);
+
   if (pageCount <= 1) return; // only one page → no pagination
 
-  let currentPage = 1;
-
-  // === Create PREVIOUS button ===
+  // --- PREVIOUS button ---
   const prevLi = document.createElement("li");
   prevLi.className = "page-item";
   prevLi.innerHTML = `<a href="#" class="page-link prev">&lt;</a>`;
@@ -164,13 +157,13 @@ function setupPagination(continent) {
     e.preventDefault();
     if (currentPage > 1) {
       currentPage--;
-      showPage(continent, currentPage);
+      showPage(continent, currentPage, cardsPerPage);
       updateActivePage();
     }
   });
   pagination.appendChild(prevLi);
 
-  // === Create NUMBERED buttons ===
+  // --- NUMBERED buttons ---
   for (let i = 1; i <= pageCount; i++) {
     const li = document.createElement("li");
     li.className = "page-item";
@@ -178,13 +171,13 @@ function setupPagination(continent) {
     li.addEventListener("click", e => {
       e.preventDefault();
       currentPage = i;
-      showPage(continent, currentPage);
+      showPage(continent, currentPage, cardsPerPage);
       updateActivePage();
     });
     pagination.appendChild(li);
   }
 
-  // === Create NEXT button ===
+  // --- NEXT button ---
   const nextLi = document.createElement("li");
   nextLi.className = "page-item";
   nextLi.innerHTML = `<a href="#" class="page-link next">&gt;</a>`;
@@ -192,19 +185,28 @@ function setupPagination(continent) {
     e.preventDefault();
     if (currentPage < pageCount) {
       currentPage++;
-      showPage(continent, currentPage);
+      showPage(continent, currentPage, cardsPerPage);
       updateActivePage();
     }
   });
   pagination.appendChild(nextLi);
 
-  // === Update active page ===
   function updateActivePage() {
     document.querySelectorAll(".page-item").forEach(el => el.classList.remove("active"));
-    pagination.children[currentPage].classList.add("active"); // offset by 1 because prevLi is first
+    pagination.children[currentPage].classList.add("active"); // prevLi is first
   }
 
-  // Initialize
-  showPage(continent, currentPage);
-  updateActivePage();
+  // Initial render
+  showPage(continent, currentPage, cardsPerPage);
+
+  // --- Recalculate on resize ---
+  window.addEventListener("resize", () => {
+    const newCardsPerPage = getCardsPerPage();
+    if (newCardsPerPage !== cardsPerPage) {
+      cardsPerPage = newCardsPerPage;
+      currentPage = 1; // reset to first page
+      setupPagination(continent); // rebuild pagination
+    }
+  });
 }
+

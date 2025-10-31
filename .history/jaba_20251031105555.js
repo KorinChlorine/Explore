@@ -7,9 +7,8 @@ const titleElement = document.querySelector(".card-title");
 const pagination = document.getElementById("pagination");
 const AboutSection = document.querySelector(".about-container")
 const PlaceSection = document.querySelector(".place-container")
-let cardsPerPage = getCardsPerPage(); 
+const cardsPerPage = 8;
 let previousContinent = null
-
 
 
 // ====== Restore selected continent on page load ======
@@ -98,22 +97,15 @@ function displayContinent(continent) {
 
 
 
-
-window.addEventListener("resize", () => {
-  const newCardsPerPage = getCardsPerPage();
-  if (newCardsPerPage !== cardsPerPage && currentContinent) {
-    cardsPerPage = newCardsPerPage;
-    setupPagination(currentContinent); // re-render
-  }
-});
-
-// Helper: return cards per page based on screen width
+// === Responsive cards per page ===
 function getCardsPerPage() {
-  if (window.innerWidth < 570) return 3; // Mobile view
-  return 8; // Desktop view
+  const width = window.innerWidth;
+  if (width >= 992) return 8; // Desktop (2 rows × 4 per row)
+  if (width >= 600) return 4; // Tablet
+  return 3; // Mobile (3 rows × 1 per row)
 }
 
-// ====== Function: Show cards per page ======
+// === Function for dynamically creating cards ===
 function showPage(continent, page) {
   cardHolder.innerHTML = "";
 
@@ -123,11 +115,11 @@ function showPage(continent, page) {
 
   pagePlaces.forEach(place => {
     const card = document.createElement("div");
-    card.className = "col-sm-6 col-md-4 col-lg-3";
+    card.className = "col-sm-6 col-md-4 col-lg-3"; // responsive layout
+
     card.innerHTML = `
       <div class="card text-white bg-dark h-100 position-relative overflow-hidden">
         <img src="${place.image}" class="card-img img-fluid" alt="${place.name}">
-        <!-- Overlay on hover -->
         <div class="card-overlay d-flex flex-column justify-content-center align-items-center text-center">
           <h5 class="fw-bold">${place.name}</h5>
           <p class="overlay-desc small px-3">${place.description || "Discover this amazing place!"}</p> 
@@ -136,8 +128,8 @@ function showPage(continent, page) {
       </div>
     `;
 
-    // open destination when button clicked
-    card.querySelector(".see-more-btn").addEventListener("click", (e) => {
+    // Open destination page
+    card.querySelector(".see-more-btn").addEventListener("click", e => {
       e.stopPropagation();
       window.location.href = `destination.html?continent=${continent.continent}&place=${place.id}`;
     });
@@ -146,17 +138,18 @@ function showPage(continent, page) {
   });
 }
 
-// ====== Function: Setup pagination ======
+// === Set up pagination ===
 function setupPagination(continent) {
-  currentContinent = continent; // remember for resize
   pagination.innerHTML = "";
+  currentContinent = continent; // save for resizing
 
+  cardsPerPage = getCardsPerPage(); // recalc based on current screen width
   const pageCount = Math.ceil(continent.places.length / cardsPerPage);
-  if (pageCount <= 1) return; // only one page → no pagination
+  if (pageCount <= 1) return; // no need for pagination if only one page
 
   let currentPage = 1;
 
-  // === Create PREVIOUS button ===
+  // --- PREVIOUS button ---
   const prevLi = document.createElement("li");
   prevLi.className = "page-item";
   prevLi.innerHTML = `<a href="#" class="page-link prev">&lt;</a>`;
@@ -170,7 +163,7 @@ function setupPagination(continent) {
   });
   pagination.appendChild(prevLi);
 
-  // === Create NUMBERED buttons ===
+  // --- NUMBERED buttons ---
   for (let i = 1; i <= pageCount; i++) {
     const li = document.createElement("li");
     li.className = "page-item";
@@ -184,7 +177,7 @@ function setupPagination(continent) {
     pagination.appendChild(li);
   }
 
-  // === Create NEXT button ===
+  // --- NEXT button ---
   const nextLi = document.createElement("li");
   nextLi.className = "page-item";
   nextLi.innerHTML = `<a href="#" class="page-link next">&gt;</a>`;
@@ -198,13 +191,22 @@ function setupPagination(continent) {
   });
   pagination.appendChild(nextLi);
 
-  // === Update active page ===
+  // --- Highlight current page ---
   function updateActivePage() {
     document.querySelectorAll(".page-item").forEach(el => el.classList.remove("active"));
-    pagination.children[currentPage].classList.add("active"); // offset by 1 because prevLi is first
+    pagination.children[currentPage].classList.add("active"); // prevLi is first
   }
 
-  // Initialize
+  // --- Initialize first page ---
   showPage(continent, currentPage);
   updateActivePage();
 }
+
+// === Recalculate on window resize ===
+window.addEventListener("resize", () => {
+  const newCardsPerPage = getCardsPerPage();
+  if (newCardsPerPage !== cardsPerPage && currentContinent) {
+    setupPagination(currentContinent); // re-render with new cards per page
+  }
+});
+

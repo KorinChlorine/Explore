@@ -7,9 +7,8 @@ const titleElement = document.querySelector(".card-title");
 const pagination = document.getElementById("pagination");
 const AboutSection = document.querySelector(".about-container")
 const PlaceSection = document.querySelector(".place-container")
-let cardsPerPage = getCardsPerPage(); 
+const cardsPerPage = 8;
 let previousContinent = null
-
 
 
 // ====== Restore selected continent on page load ======
@@ -96,24 +95,7 @@ function displayContinent(continent) {
   showPage(continent, 1);
 }
 
-
-
-
-window.addEventListener("resize", () => {
-  const newCardsPerPage = getCardsPerPage();
-  if (newCardsPerPage !== cardsPerPage && currentContinent) {
-    cardsPerPage = newCardsPerPage;
-    setupPagination(currentContinent); // re-render
-  }
-});
-
-// Helper: return cards per page based on screen width
-function getCardsPerPage() {
-  if (window.innerWidth < 570) return 3; // Mobile view
-  return 8; // Desktop view
-}
-
-// ====== Function: Show cards per page ======
+//function for dynamically create cards
 function showPage(continent, page) {
   cardHolder.innerHTML = "";
 
@@ -127,6 +109,7 @@ function showPage(continent, page) {
     card.innerHTML = `
       <div class="card text-white bg-dark h-100 position-relative overflow-hidden">
         <img src="${place.image}" class="card-img img-fluid" alt="${place.name}">
+
         <!-- Overlay on hover -->
         <div class="card-overlay d-flex flex-column justify-content-center align-items-center text-center">
           <h5 class="fw-bold">${place.name}</h5>
@@ -146,12 +129,12 @@ function showPage(continent, page) {
   });
 }
 
-// ====== Function: Setup pagination ======
-function setupPagination(continent) {
-  currentContinent = continent; // remember for resize
-  pagination.innerHTML = "";
 
+//set up pagination
+function setupPagination(continent) {
+  pagination.innerHTML = "";
   const pageCount = Math.ceil(continent.places.length / cardsPerPage);
+
   if (pageCount <= 1) return; // only one page → no pagination
 
   let currentPage = 1;
@@ -175,12 +158,14 @@ function setupPagination(continent) {
     const li = document.createElement("li");
     li.className = "page-item";
     li.innerHTML = `<a href="#" class="page-link">${i}</a>`;
+
     li.addEventListener("click", e => {
       e.preventDefault();
       currentPage = i;
       showPage(continent, currentPage);
       updateActivePage();
     });
+
     pagination.appendChild(li);
   }
 
@@ -198,13 +183,12 @@ function setupPagination(continent) {
   });
   pagination.appendChild(nextLi);
 
-  // === Update active page ===
+//  Update active page 
   function updateActivePage() {
     document.querySelectorAll(".page-item").forEach(el => el.classList.remove("active"));
     pagination.children[currentPage].classList.add("active"); // offset by 1 because prevLi is first
   }
-
-  // Initialize
+// initialize 
   showPage(continent, currentPage);
   updateActivePage();
 }

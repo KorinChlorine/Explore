@@ -9,12 +9,7 @@
     overflow-x: hidden;
  }
 
- .custom-navbar * {
-   all: unset;
-   /* resets all inherited styles */
-   display: revert;
-   /* restores browser default display */
- }
+
 
  /* hero section */
 
