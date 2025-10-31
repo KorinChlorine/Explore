@@ -68,14 +68,14 @@
     if (scrolled) {
       navbar.classList.add("shrink");
       document.body.classList.add("scrolled");
-      navbarInner.classList.add("hide-icons"); // hide icons
+      navbarInner.classList.add("hide-icons");
       navbarInner.style.maxWidth = `${config.shrunkMaxWidth}px`;
       navbarInner.style.padding = config.shrunkPadding;
       navbarInner.style.transform = `scale(${config.shrunkScale})`;
     } else {
       navbar.classList.remove("shrink");
       document.body.classList.remove("scrolled");
-      navbarInner.classList.remove("hide-icons"); // show icons
+      navbarInner.classList.remove("hide-icons");
       navbarInner.style.maxWidth = `${config.initialMaxWidth}px`;
       navbarInner.style.padding = config.initialPadding;
       navbarInner.style.transform = `scale(${config.initialScale})`;
@@ -91,6 +91,18 @@
         ticking = false;
       });
       ticking = true;
+    }
+  }
+
+  // ✅ New function: hide icons when screen width ≤ 950px
+  function updateIconVisibility() {
+    const icons = document.querySelectorAll(".navbar-inner .icon");
+    if (!icons.length) return;
+
+    if (window.innerWidth <= 950) {
+      icons.forEach((icon) => (icon.style.display = "none"));
+    } else {
+      icons.forEach((icon) => (icon.style.display = ""));
     }
   }
 
@@ -151,7 +163,6 @@
       }
       if (navLeft) navLeft.classList.add("mobile-open");
       if (navRight) navRight.classList.add("mobile-open");
-      // Prevent body scroll when menu is open
       document.body.style.overflow = "hidden";
       document.body.classList.add("menu-open");
     }
@@ -199,15 +210,15 @@
       }
     });
 
-    // Expose close function globally for external use
+    // Expose close function globally
     window.closeMobileMenu = closeMobileMenu;
   })();
 
-  // Public API for runtime manipulation
+  // Public API
   window.navbarControls = {
     setShrinkThreshold: (pixels) => {
       config.shrinkAt = pixels;
-      onScroll(); // Re-evaluate immediately
+      onScroll();
     },
     setShrunkSize: (maxWidth, padding = null) => {
       config.shrunkMaxWidth = maxWidth;
@@ -246,6 +257,7 @@
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         updateResponsiveConfig();
+        updateIconVisibility(); // ✅ Check icon visibility on resize
         onScroll();
       }, 150);
     },
@@ -254,11 +266,5 @@
 
   // Initial responsive config
   updateResponsiveConfig();
+  updateIconVisibility(); // ✅ Initial icon visibility check
 })();
-
-// Usage examples:
-// navbarControls.setShrinkThreshold(150); // Shrink at 150px scroll
-// navbarControls.setShrunkSize(750, "6px 24px"); // Make it smaller
-// navbarControls.setShrunkScale(0.8); // Scale it down more
-// navbarControls.forceShrink(); // Force shrink state
-// console.log(navbarControls.getConfig()); // View current config

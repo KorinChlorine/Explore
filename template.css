@@ -62,7 +62,7 @@
 
 .frosted-card h2 {
   margin: 0 0 0.5rem 0;
-  color: white;
+  color: rgb(0, 0, 0);
   font-size: 1.25rem;
 }
 .frosted-card p {
@@ -111,7 +111,7 @@
   justify-items: center;
   align-items: center;
   column-gap: 1rem;
-  background: rgba(255, 255, 255, 0.06);
+  background-color: rgba(0, 0, 0, 0.39);
   border: 1px solid rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(var(--nav-blur)) saturate(120%);
   -webkit-backdrop-filter: blur(var(--nav-blur)) saturate(120%);
@@ -154,7 +154,7 @@
 }
 
 .nav-logo img {
-  height: 48px;
+  height: 60px;
   width: auto;
   display: block;
   transition: transform var(--nav-transition-duration)
@@ -273,17 +273,16 @@
   flex-shrink: 0;
 }
 
-/* Tablet breakpoint */
-@media (max-width: 1024px) {
+@media (max-width: 1220px) {
   .navbar-inner {
-    max-width: 95%;
+    max-width: 90%;
     padding: 12px 32px;
     column-gap: 0.75rem;
   }
 
   .nav-left,
   .nav-right {
-    gap: 1.2rem;
+    gap: 2.2rem;
   }
 
   .nav-left {
@@ -323,73 +322,78 @@
 }
 
 /* Tablet breakpoint */
-@media (max-width: 800px) {
-  #site-navbar {
-    top: 12px;
-    padding: 0 2%;
-  }
-
+@media (max-width: 1024px) {
   .navbar-inner {
-    padding: 10px 24px;
-    column-gap: 0.5rem;
-    border-radius: 24px;
-    margin: 0 0.5rem;
-    max-width: 96%;
+    max-width: 90%;
+    padding: 12px 32px;
+    column-gap: 0.75rem;
   }
 
   .nav-left,
   .nav-right {
-    gap: 0.8rem;
-    min-width: 0;
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
+    gap: 1.5rem;
+  }
+
+  .nav-left {
+    padding-right: 1rem;
+  }
+
+  .nav-right {
+    padding-left: 1rem;
   }
 
   .nav-left a,
   .nav-right a {
-    padding: 0.4rem 0.85rem;
-    font-size: 0.85rem;
-    gap: 6px;
+    padding: 0.45rem 1rem;
+    font-size: 0.9rem;
   }
 
   .nav-logo img {
-    height: 38px;
-  }
-
-  .navbar.shrink #site-navbar {
-    top: 8px;
+    height: 44px;
   }
 
   .navbar.shrink .navbar-inner {
-    max-width: 92%;
-    padding: 8px 20px;
-    transform: scale(0.92);
+    max-width: 90%;
+    padding: 8px 24px;
+    transform: scale(0.9);
   }
 
-  .navbar.shrink .nav-logo img {
-    transform: scale(0.88);
+  .navbar.shrink .nav-left,
+  .navbar.shrink .nav-right {
+    gap: 1rem;
   }
 
-  .shrink .nav-left a,
-  .shrink .nav-right a {
-    padding: 0.35rem 0.75rem;
-    font-size: 0.8rem;
+  .navbar.shrink .nav-left a,
+  .navbar.shrink .nav-right a {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.85rem;
   }
 }
 
+@media (max-width: 970px) {
+  .nav-left,
+  .nav-right {
+    gap: 0.2rem;
+  }
+  .nav-left a,
+  .nav-right a {
+    padding: 0.45rem 1rem;
+    font-size: 0.1rem;
+  }
+}
 /* Mobile breakpoint */
-@media (max-width: 640px) {
+@media (max-width: 875px) {
   #site-navbar {
     top: 8px;
     padding: 0 2%;
   }
 
   .navbar-inner {
-    padding: 0.75rem 1rem;
+    padding: 0rem 1rem;
     border-radius: 20px;
     margin: 0 0.5rem;
     grid-template-columns: auto 1fr auto;
-    max-width: 96%;
+    max-width: 100%;
   }
 
   .navbar.shrink #site-navbar {
@@ -408,6 +412,7 @@
     align-items: center;
     justify-content: center;
     grid-column: 6;
+    right: 5%;
   }
 
   .nav-logo {
@@ -415,7 +420,7 @@
     left: 0;
     transform: none;
     grid-column: 1;
-    justify-self: start;
+    justify-self: left;
     padding-right: 0px;
   }
 
@@ -492,8 +497,30 @@
     font-size: x-large;
     color: rgb(255, 174, 0);
     font-family: "Courier New", Courier, monospace;
-    padding-right: 250px;
+    padding-right: 80%;
     font-weight: bolder;
+  }
+}
+
+@media (max-width: 650px) {
+  .nav-logo img {
+    height: 30px;
+  }
+
+  .navbar.shrink .nav-logo img {
+    height: 26px;
+  }
+
+  .nav-logo {
+    left: 0%;
+    right: 100%;
+    padding-right: 100%;
+  }
+  .nav-toggle {
+    right: 7%;
+  }
+  .name {
+    padding-right: 70%;
   }
 }
 
@@ -552,23 +579,6 @@
   .nav-right a {
     padding: 0.65rem 1rem;
     font-size: 0.88rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .nav-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
-    padding: 0.5rem;
-    cursor: pointer;
-    position: relative;
-    right: 0;
-    top: 0;
-    transform: none;
-    z-index: 1001;
   }
 }
 
