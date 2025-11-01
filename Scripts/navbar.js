@@ -249,6 +249,149 @@
     { passive: true }
   );
 
+  // Scroll to top functionality
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  function toggleScrollTopButton() {
+    if (!scrollTopBtn) return;
+
+    // Check if we're at the very top (with a small threshold for mobile bounce effects)
+    const isAtTop = window.scrollY < 50;
+
+    // Add or remove visible class based on scroll position
+    if (isAtTop) {
+      scrollTopBtn.classList.remove("visible");
+    } else {
+      scrollTopBtn.classList.add("visible");
+    }
+  }
+
+  scrollTopBtn?.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+
+  window.addEventListener("scroll", toggleScrollTopButton, { passive: true });
+  toggleScrollTopButton();
+
+  // Chatbot functionality
+  const chatbotButton = document.getElementById("chatbotButton");
+  let chatbotWindow = null;
+
+  function toggleFloatingButtons(show) {
+    const chatbotBtn = document.getElementById("chatbotButton");
+    const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+    if (chatbotBtn) {
+      chatbotBtn.style.opacity = show ? "1" : "0";
+      chatbotBtn.style.visibility = show ? "visible" : "hidden";
+    }
+
+    if (scrollTopBtn) {
+      scrollTopBtn.style.opacity = show ? "1" : "0";
+      scrollTopBtn.style.visibility = show ? "visible" : "hidden";
+    }
+  }
+
+  function createChatbotWindow() {
+    if (chatbotWindow) return;
+
+    // Hide floating buttons when chat opens
+    toggleFloatingButtons(false);
+
+    chatbotWindow = document.createElement("div");
+    chatbotWindow.className = "chatbot-window";
+    chatbotWindow.innerHTML = `
+      <div class="chatbot-header">
+        <h3>Explore AI Assistant</h3>
+        <button class="chatbot-close" aria-label="Close chatbot">×</button>
+      </div>
+      <div class="chatbot-messages">
+        <div class="message bot">
+          Hello! I'm Explore's AI assistant. How can I help you today?
+        </div>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" placeholder="Type your message..." aria-label="Chat message">
+        <button>Send</button>
+      </div>
+    `;
+
+    document.body.appendChild(chatbotWindow);
+
+    // Add event listeners
+    const closeBtn = chatbotWindow.querySelector(".chatbot-close");
+    const input = chatbotWindow.querySelector("input");
+    const sendBtn = chatbotWindow.querySelector("button");
+    const messages = chatbotWindow.querySelector(".chatbot-messages");
+
+    closeBtn.addEventListener("click", closeChatbot);
+
+    function sendMessage() {
+      const text = input.value.trim();
+      if (!text) return;
+
+      // Add user message
+      const userMsg = document.createElement("div");
+      userMsg.className = "message user";
+      userMsg.textContent = text;
+      messages.appendChild(userMsg);
+
+      // Clear input
+      input.value = "";
+
+      // Scroll to bottom
+      messages.scrollTop = messages.scrollHeight;
+
+      // Simulate AI response (replace with actual AI implementation)
+      setTimeout(() => {
+        const botMsg = document.createElement("div");
+        botMsg.className = "message bot";
+        botMsg.textContent = `I understand you're asking about "${text}". How can I assist you further?`;
+        messages.appendChild(botMsg);
+        messages.scrollTop = messages.scrollHeight;
+      }, 1000);
+    }
+
+    input.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        sendMessage();
+      }
+    });
+
+    sendBtn.addEventListener("click", sendMessage);
+
+    // Show chatbot window with animation
+    requestAnimationFrame(() => {
+      chatbotWindow.classList.add("open");
+    });
+  }
+
+  function closeChatbot() {
+    if (!chatbotWindow) return;
+
+    chatbotWindow.classList.remove("open");
+
+    // Show floating buttons when chat closes
+    toggleFloatingButtons(true);
+
+    setTimeout(() => {
+      chatbotWindow.remove();
+      chatbotWindow = null;
+    }, 300);
+  }
+
+  chatbotButton?.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (chatbotWindow) {
+      closeChatbot();
+    } else {
+      createChatbotWindow();
+    }
+  });
+
   updateResponsiveConfig();
   updateIconVisibility();
 })();

@@ -19,7 +19,6 @@
         .then((html) => {
           document.getElementById("site-navbar").innerHTML = html;
 
-          // now load the navbar behavior (once HTML is inserted)
           const s = document.createElement("script");
           s.src = "/Scripts/navbar.js";
           s.defer = true;
@@ -30,13 +29,19 @@
 
     <div class="faq-container">
       <h1>FREQUENTLY ASKED QUESTIONS</h1>
-      <div class="SearchBar">
-        <input
-          type="text"
-          id="faqSearchInput"
-          onkeyup="searchFAQs()"
-          placeholder="Search for questions..."
-        />
+      <div class="search-support-container">
+        <div class="SearchBar">
+          <input
+            type="text"
+            id="faqSearchInput"
+            onkeyup="searchFAQs()"
+            placeholder="Search for questions..."
+          />
+        </div>
+        <button class="support-button" onclick="openSupport()">
+          <span class="support-icon">💬</span>
+          <span class="support-text">24/7 Support</span>
+        </button>
       </div>
       <div class="faq-item">
         <div class="faq-question" onclick="toggleFaq(this)">
@@ -314,5 +319,6 @@
         }
       }
     </script>
+    <script src="/Scripts/faq-popup.js"></script>
   </body>
 </html>

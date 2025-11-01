@@ -241,7 +241,7 @@
   right: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  z-index: 1000;
+  z-index: 100000;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .name {
@@ -594,6 +594,200 @@
 }
 .nav-toggle.active span:nth-child(3) {
   transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* Scroll to top button */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 100px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #f9b233 0%, #fac55f 100%);
+  border: none;
+  border-radius: 50%;
+  color: #2c5f8d;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.scroll-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #fac55f 0%, #f9b233 100%);
+}
+
+@media (max-width: 768px) {
+  .scroll-top-btn {
+    bottom: 20px;
+    right: 80px;
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+  }
+}
+
+/* Chatbot button and window styles */
+.chatbot-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #f9b233 0%, #fac55f 100%);
+  border: none;
+  border-radius: 50%;
+  color: #2c5f8d;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.chatbot-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #fac55f 0%, #f9b233 100%);
+}
+
+@media (max-width: 768px) {
+  .chatbot-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+  }
+}
+
+.chatbot-window {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 350px;
+  height: 500px;
+  background: linear-gradient(135deg, #6b7b8a 0%, #7a8a99 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1001;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chatbot-window.open {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.chatbot-header {
+  padding: 20px;
+  background: linear-gradient(135deg, #f9b233 0%, #fac55f 100%);
+  color: #2c5f8d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chatbot-header h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.chatbot-close {
+  background: none;
+  border: none;
+  color: #2c5f8d;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  transition: all 0.3s ease;
+}
+
+.chatbot-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.chatbot-messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.chatbot-input {
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  gap: 10px;
+}
+
+.chatbot-input input {
+  flex: 1;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  outline: none;
+}
+
+.chatbot-input input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.chatbot-input button {
+  padding: 8px 20px;
+  background: #f9b233;
+  border: none;
+  border-radius: 20px;
+  color: #2c5f8d;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.chatbot-input button:hover {
+  background: #fac55f;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .chatbot-window {
+    width: calc(100% - 40px);
+    height: 60vh;
+    bottom: 20px;
+    right: 20px;
+  }
 }
 
 /* Glass effect for mobile menu */
