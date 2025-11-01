@@ -24,7 +24,13 @@ fetch("data.json")
 
 // ====== Responsive cards per page ======
 function updateCardsPerPage() {
-  cardsPerPage = window.innerWidth < 580 ? 3 : 8;
+   if (window.innerWidth < 575) {
+    cardsPerPage = 3; // small screens
+  } else if (window.innerWidth < 900) {
+    cardsPerPage = 6; // medium screens
+  } else {
+    cardsPerPage = 8; // large screens
+  }
 }
 
 // initial call
@@ -93,13 +99,6 @@ paths.forEach(path => {
   });
 });
 
-// Optional: click outside SVG resets everything
-document.addEventListener("click", e => {
-  if (!e.target.classList.contains("path")) {
-    paths.forEach(p => p.classList.remove("active", "dimmed"));
-    activePath = null;
-  }
-});
 
 
 
@@ -129,11 +128,11 @@ function showCountries(continent) {
     const card = document.createElement("div");
     card.className = ""; 
     card.innerHTML = `
-      <div class="card text-white bg-dark w-100 h-100 position-relative overflow-hidden">
+      <div class="country-card card text-white bg-dark w-100 h-100 position-relative overflow-hidden">
         <img src="${country.image}" class="card-img img-fluid country-card-bg" alt="${country.country}">
         <div class="country-overlay d-flex flex-column justify-content-center align-items-start text-start">
           <h5 class="fw-bold country-title">${country.country}</h5>
-          <p class="overlay-desc small">${country.description || "Explore this country!"}</p>
+          <p class="overlay-desc">${country.description || "Explore this country!"}</p>
           <button class="btn btn-light btn-sm see-more-btn mt-2">See Cities</button>
         </div>
       </div>
@@ -151,6 +150,9 @@ function displayCities(country, continent) {
   aboutSection.style.display = "none";
   countrySection.style.display = "none";
   citySection.style.display = "block";
+
+
+
 
   const cities = country.cities || country.places || [];
   if (!cities.length) {

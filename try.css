@@ -47,11 +47,10 @@
 
 /* ANIMATIONS */
 
-
-body {
+body, html {
   overflow-x: hidden !important;
+  font-size: 16px;
 }
-
 
 /* HERO SECTION */
 .carousel-container {
@@ -74,17 +73,14 @@ body {
   z-index: 10;
   font-size: 5rem;
   font-weight: bold;
-
 }
 
 /* h1 */
 .carousel-title .HeroTitle {
   font-weight: 900;
   color: #fff;
-  text-shadow:
-    2px 2px 0 #d9d9d9,
-    /* light grey for depth */
-    4px 4px 6px rgba(0, 0, 0, 0.4);
+  text-shadow: 2px 2px 0 #d9d9d9,
+    /* light grey for depth */ 4px 4px 6px rgba(0, 0, 0, 0.4);
   /* soft outer shadow */
 }
 
@@ -97,14 +93,21 @@ body {
   position: relative;
 
   /* Fade only at the bottom */
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 85%, rgba(0, 0, 0, 0) 100%);
-  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 85%,
+    rgba(0, 0, 0, 0) 100%
+  );
 
   z-index: 0;
 }
 
 /* end of HERO SECTION */
-
 
 /* ABOUT SECTION */
 .about-section {
@@ -113,15 +116,11 @@ body {
 
 .destination-title {
   font-weight: bold;
-  font-size: 5rem !important;
-  text-shadow:
-    0 0 5px rgba(255, 255, 255, 0.6),
-    0 0 10px rgba(255, 255, 255, 0.4),
-    0 2px 5px rgba(0, 0, 0, 0.5);
+  font-size: 3rem !important;
+  font-weight: 900 !important;
 }
 
 /* End of ABOUT SECTION */
-
 
 /* TOURIST SPOT SECTION */
 .tourist-inner-container {
@@ -129,7 +128,6 @@ body {
   overflow: hidden;
   padding-left: 10%;
 }
-
 
 /* tourist section image */
 .tourist-section-pic {
@@ -153,7 +151,6 @@ body {
 }
 
 /* End of TOURIST SPOT SECTION */
-
 
 /* Food Section */
 .food-inner-container {
@@ -186,14 +183,14 @@ body {
 /* End of FOOD SECTION */
 
 /* ACTIVITIES SECTION */
-.activities-inner-container{
+.activities-inner-container {
   position: relative;
   overflow: hidden;
   padding-left: 10%;
 }
 
 .activities-section-pic {
- position: absolute;
+  position: absolute;
   top: 53%;
   left: -20%;
   height: 110% !important;
@@ -213,13 +210,21 @@ body {
 }
 /* End of ACTIVITIES SECTION */
 
-
 /* (Shared Styles) */
 
 /* --- Base Layout --- */
 .tourist-section,
-.food-section, .activities-section {
+.food-section,
+.activities-section {
   margin-bottom: 40px;
+}
+.tourist-section-card,
+.tourist-section,
+.food-section-card,
+.food-section,
+.activities-section,
+.about-section-card {
+  height: fit-content !important;
 }
 
 .section-item {
@@ -233,11 +238,17 @@ body {
 
 /* --- TEXT --- */
 .tourist-title,
-.food-title, .activities-title {
-  font-size: 2rem;
+.food-title,
+.activities-title {
+  font-size: 3rem;
+  font-weight: 900 !important;
   padding: 0px 20px;
   letter-spacing: 1px;
   animation: fadeInText 0.8s ease;
+}
+strong{
+  font-weight: 700 !important;
+   text-transform: uppercase;
 }
 
 /* each section title */
@@ -250,36 +261,35 @@ body {
   width: 100%;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
   font-size: 3rem;
+  font-weight: 1000 !important;
   font-weight: bold;
 }
-
-/* each card/carousel title */
-.tourist-title,
-.food-title,
-.activities-title {
-  font-size: 4rem;
-  font-weight: 500;
-  text-shadow:
-    0 0 10px rgba(255, 255, 255, 0.8),
-    0 0 20px rgba(255, 255, 255, 0.6),
-    0 2px 8px rgba(0, 0, 0, 0.7);
+.section-header {
+  margin-bottom: 20px !important;
+  padding: 5px 0px !important;
 }
+
 
 /* each card/carousel paragraph */
 .info {
   height: fit-content !important;
   padding: 10px 20px;
+  font-weight: 300;
+  font-size: 0.9rem !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-shadow:
-    0 0 5px rgba(255, 255, 255, 0.6),
-    0 0 10px rgba(255, 255, 255, 0.4),
-    0 2px 5px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.6),
+    0 0 10px rgba(255, 255, 255, 0.4), 0 2px 5px rgba(0, 0, 0, 0.5);
 }
-.details-content, .location-content{
+.details-content,
+.location-content {
   padding: 0px 20px;
+  font-size: 0.9rem !important;
+  font-weight: 300;
+   margin-bottom: 20px;
 }
+
 
 /* Smooth transition between slides */
 .carousel-item {
@@ -296,7 +306,6 @@ body {
 /* Optional: slightly fade out leaving slides */
 .carousel-item-next,
 .carousel-item-prev {
-
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
@@ -305,8 +314,6 @@ body {
 .carousel-item.active .card-navigation-button::after {
   animation: underlineGlow 0.5s ease-in-out;
 }
-
-
 
 /* --- BUTTONS --- */
 .card-navigation-button {
@@ -351,7 +358,6 @@ body {
 
 /* --- BUTTONS --- */
 
-
 /* --- CAROUSEL CONTROLS --- */
 
 /* carousel next/prev */
@@ -376,7 +382,6 @@ body {
 .carousel-control-next-icon {
   filter: invert(1) brightness(2);
   transition: transform 0.3s ease;
-
 }
 
 .carousel-control-prev:hover .carousel-control-prev-icon,
@@ -410,17 +415,10 @@ body {
 
 /* (Shared Styles) */
 
-
-
-
-
-
-
 /* media queries */
 
 /* --- Medium Screens (≤1000px) --- */
 @media (max-width: 1000px) {
-
   /* hero title */
   .HeroTitle {
     font-size: 6rem !important;
@@ -428,7 +426,8 @@ body {
 
   /* remove paddings for small screens */
   .tourist-inner-container,
-  .carousel-inner, .activities-inner-container {
+  .carousel-inner,
+  .activities-inner-container {
     padding-left: unset !important;
   }
 
@@ -438,23 +437,43 @@ body {
 
   /* remove the floating images */
   .tourist-section-pic,
-  .food-section-pic, .activities-section-pic {
+  .food-section-pic,
+  .activities-section-pic {
     display: none;
   }
 
   /*image as bg image */
   .tourist-inner-container,
-  .food-inner-container, .activities-inner-container {
+  .food-inner-container,
+  .activities-inner-container {
     position: relative !important;
     width: 100% !important;
   }
 
   .tourist-section-card,
-  .food-section-card, .Activities-section-card {
+  .food-section-card,
+  .Activities-section-card {
     position: relative;
     z-index: 1;
     min-height: 75vh;
   }
+
+.activities-section {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.activities-section-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel-inner {
+  transition: height 0.3s ease;
+}
+
 
   .tourist-section-card {
     --bg-url: url("images/tourist-bg.jpg");
@@ -464,13 +483,14 @@ body {
     --bg-url: url("images/food-bg.jpg");
   }
 
-  .activities-section-pic{
-     --bg-url: url("images/tourist-bg.jpg");
+  .activities-section-pic {
+    --bg-url: url("images/tourist-bg.jpg");
   }
 
   /* add overlay to adjust visibility */
   .tourist-section-card::before,
-  .food-section-card::before, .Activities-section-card::before {
+  .food-section-card::before,
+  .Activities-section-card::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -486,7 +506,8 @@ body {
   }
 
   .tourist-section-card::after,
-  .food-section-card::after, .Activities-section-card::after {
+  .food-section-card::after,
+  .Activities-section-card::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -494,155 +515,34 @@ body {
     z-index: 1;
   }
 
-  .tourist-section-card>*,
-  .food-section-card>*, .Activities-section-card>* {
+  .tourist-section-card > *,
+  .food-section-card > *,
+  .Activities-section-card > * {
     position: relative;
     z-index: 2;
   }
 
   /*image as bg image */
 
-  .tourist-title,
-  .food-title, .activities-title {
-    font-size: 2.5rem;
-  }
 
   .tourist-section,
-  .food-section, .activities-section {
+  .food-section,
+  .activities-section {
     height: fit-content !important;
   }
   .tourist-section,
-  .food-section, .activities-section {
+  .food-section,
+  .activities-section {
     height: fit-content !important;
-  } 
+  }
   .tourist-section-card,
-  .food-section-card, .Activities-section-card {
-    min-height: 50vh !important;
-  }
-
-
-}
-
-
-/* --- Tablets / Large Phones (≤800px) --- */
-@media (max-width: 800px) {
-
-  /* let about card fit the whole screen */
-  .about-section-card {
-    width: 90% !important;
-  }
-
-  .destination-title {
-    font-size: 3rem !important;
-  }
-
-  .destination-description {
-    font-size: 0.8rem !important;
-  }
-
-  .carousel-inner,
-  .section-body {
-    padding: unset !important;
-  }
-
-  .info {
-    padding: 10px 15px !important;
-  }
-
-  
-
-  .tourist-section-card,
-  .food-section-card, .Activities-section-card {
-    min-height: 50vh !important;
-  }
-
-}
-
-
-
-/* --- Phones (≤550px) --- */
-@media (max-width: 550px) {
-  .destination-title {
-    font-size: 2.5rem !important;
-  }
-
-  .destination-description,
-  .fst-italic {
-    font-size: 0.7rem !important;
-  }
-
-  .tourist-inner-container,
-  .food-inner-container, .activities-inner-container {
-    padding: unset !important;
-  }
-
-  .section-title {
-    font-size: 2rem !important;
-    padding: 0 5px;
-  }
-
-  .info {
-    font-size: 1rem !important;
-    padding: 0 10px;
-  }
-
-  /* remove the control buttons */
-  .carousel-control-prev,
-  .carousel-control-next {
-    display: none;
-  }
-
-  .tourist-section,
-  .food-section, .activities-section {
-    height: fit-content !important;
-  }
-
   .food-section-card,
-  .section-body {
-    height: 20px !important;
-  }
-
-  .section-body {
-    height: fit-content !important;
-  }
-
-  .tourist-section-card,
-  .food-section-card, .Activities-section-card {
-    height: fit-content !important;
+  .Activities-section-card {
+    min-height: 50vh !important;
   }
 }
 
-
-/* --- Very Small Screens (≤430px) --- */
-@media (max-width: 430px) {
-  .info {
-    font-size: 0.8rem !important;
-  }
-
-  .card-navigation-button button {
-    font-size: 0.6rem !important;
-  }
-  .card-navigation-button{
-    margin: 0 !important;
-  }
-}
-
-
-/* --- Portrait Fix (for tall screens) --- */
-@media (max-aspect-ratio: 3/4) {
-
-  .info {
-    height: auto !important;
-    min-height: fit-content !important;
-
-  }
-}
-
-
-
-
-
-
+/* REVIEWS SECTION */
 .reviews-wrapper {
   width: 100%;
   max-width: 1200px;
@@ -656,11 +556,10 @@ body {
 }
 
 .reviews-title {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: var(--white);
+  font-size: 4rem !important;
+  font-weight: 900 !important;
+  margin-bottom: unset !important;
   letter-spacing: -0.01em;
-  margin-bottom: 2rem;
 }
 
 /* Updated review card styling to match website design */
@@ -673,24 +572,17 @@ body {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
 }
 
-@media (min-width: 768px) {
-  .review-card {
-    padding: 3rem;
-  }
-}
-
 .author-name {
   font-size: 1.75rem;
   font-weight: 600;
-  color: var(--white);
   margin-bottom: 1rem;
 }
 
 .review-text {
-  font-size: 1.125rem;
-  color: var(--text-light);
+  font-size: 1rem;
+  font-style: italic;
   line-height: 1.6;
-  font-weight: 400;
+  font-weight: 100;
   margin-bottom: 1.5rem;
 }
 
@@ -705,22 +597,13 @@ body {
 
 .author-username {
   font-weight: 600;
-  color: var(--white);
   font-size: 1rem;
-}
-
-/* Added verification badge styling */
-.author-badge {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  margin: 0;
-  font-weight: 400;
 }
 
 .stars-container {
   display: flex;
   gap: 0.25rem;
-  margin-bottom: 20PX;
+  margin-bottom: 20px;
 }
 
 .star {
@@ -728,11 +611,10 @@ body {
   color: rgba(255, 255, 255, 0.3);
   transition: color 0.3s ease;
 }
-
 .star.filled {
-  color: #f4a460; /* gold color */;
+  color: #f4a460; /* gold color */
 }
-
+/* control buttons for reviews */
 .navigation-container {
   display: flex;
   align-items: center;
@@ -747,7 +629,7 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 0.75rem;
   cursor: pointer;
-  color: var(--white);
+  color: white;
   font-size: 1.25rem;
   transition: all 0.3s ease;
   border-radius: 50%;
@@ -784,9 +666,101 @@ body {
   background-color: rgb(187, 187, 187);
   transform: scale(1.2);
 }
+/* END OF REVIEW SECTION */
 
-/* Responsive adjustments */
-@media (max-width: 576px) {
+/* --- Tablets / Large Phones (≤800px) --- */
+@media (max-width: 800px) {
+  /* let about card fit the whole screen */
+  .about-section-card {
+    width: 90% !important;
+  }
+
+  .destination-title {
+    font-size: 3rem !important;
+  }
+
+  .destination-description {
+    font-size: 0.8rem !important;
+  }
+
+  .carousel-inner,
+  .section-body {
+    padding: unset !important;
+  }
+
+  .info {
+    padding: 10px 15px !important;
+  }
+
+  .tourist-section-card,
+  .food-section-card,
+  .Activities-section-card {
+    min-height: 50vh !important;
+  }
+  .review-card {
+    padding: 3rem;
+  }
+  .stars-container {
+    margin: 10px 0px !important;
+  }
+}
+
+/* --- Phones (≤550px) --- */
+@media (max-width: 550px) {
+  .destination-title {
+    font-size: 2.5rem !important;
+  }
+
+  .destination-description,
+  .fst-italic {
+    font-size: 0.7rem !important;
+  }
+
+  .tourist-inner-container,
+  .food-inner-container,
+  .activities-inner-container {
+    padding: unset !important;
+  }
+
+  .section-title {
+    font-size: 2rem !important;
+    padding: 0 5px;
+  }
+
+  .info {
+    font-size: 1rem !important;
+    padding: 0 10px;
+  }
+  .carousel-indicators button{
+    height: 2px !important;
+  }
+
+  /* remove the control buttons */
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: none;
+  }
+
+  .tourist-section,
+  .food-section,
+  .activities-section {
+    height: fit-content !important;
+  }
+
+  .food-section-card,
+  .section-body {
+    height: 20px !important;
+  }
+
+  .section-body {
+    height: fit-content !important;
+  }
+
+  .tourist-section-card,
+  .food-section-card,
+  .Activities-section-card {
+    height: fit-content !important;
+  }
   .reviews-title {
     font-size: 1.75rem;
   }
@@ -804,8 +778,40 @@ body {
   }
 }
 
+/* --- Very Small Screens (≤430px) --- */
+@media (max-width: 430px) {
+  html{
+    font-size: 7px;
+  }
+  .info {
+    font-size: 0.8rem !important;
+  }
+
+  .card-navigation-button button {
+    font-size: 0.6rem !important;
+  }
+  .card-navigation-button {
+    margin: 0 !important;
+  }
+}
+
+/* --- Portrait Fix (for tall screens) --- */
+@media (max-aspect-ratio: 3/4) {
+  .info {
+    height: auto !important;
+    min-height: fit-content !important;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  
+}
 
 
-.tourist-section-card, .tourist-section, .food-section-card, .food-section, .activities-section, .about-section-card{  
-  height: fit-content !important;
+.info{
+  line-height: 1.5 !important;
+}
+.location-content p{
+  line-height: 1.7 !important;
 }

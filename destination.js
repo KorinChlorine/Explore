@@ -335,19 +335,19 @@ function RenderActivities(Activities) {
     item.innerHTML = `
       <h3 class="fw-bold activities-title">${activity.name}</h3>
       <div class="card-navigation-button position-relative">
-        <button class="details-btn active">Details</button>
-        <button class="location-btn">Location</button>
+        <button class="details-btn active">Overview</button>
+        <button class="location-btn">Details</button>
       </div>
       <div class="activity-content">
         <div class="details-content">
-          <p><strong>Price:</strong> ${activity.price} ${activity.currency}</p>
-          <p><strong>Age Requirement:</strong> ${activity.ageRequirement}</p>
-          <p>${activity.description}</p>
+          
+              <p><strong>Duration:</strong> ${activity.duration}</p>
+              <p><strong>Price-Range:</strong> ${activity.price}</p>
+              <p><strong>Location:</strong> ${activity.location}</p>
+
         </div>
         <div class="location-content" style="display:none;">
-          <p><strong>Venue:</strong> ${activity.place}</p>
-          <p><strong>Address:</strong> ${activity.location}</p>
-          <p><strong>Contact:</strong> ${activity.contact}</p>
+        <p>${activity.description}</p>
         </div>
       </div>
     `;
